@@ -1,0 +1,37 @@
+# --- CREDENTIALS ---
+# Never commit any .env variant. .env.example is the only env file in git.
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# --- VERIFICATION SCRIPTS ---
+# Connection verification scripts are temporary; they're deleted on PASS.
+# Keep them out of git even before deletion.
+missions/*/connections/verify/
+
+# --- HOOK & TEST OUTPUT ---
+/tmp/missions-test-output.log
+/tmp/missions-verify-body
+
+# --- OS NOISE ---
+.DS_Store
+Thumbs.db
+
+# --- EDITOR NOISE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- BUILD / DEPS (project will add its own) ---
+node_modules/
+dist/
+build/
+.next/
+__pycache__/
+*.pyc
+
+# NOTE: do NOT ignore `missions/` in general — mission state IS the project's
+# documentation. Only the verify/ subdirectory is excluded.

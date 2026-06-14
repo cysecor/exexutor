@@ -1,0 +1,16 @@
+{
+  "$schema_note": "Verify the exact hooks schema against the current Claude Code docs at https://docs.claude.com/en/docs/claude-code — the hooks API has evolved. The configuration below targets the SubagentStop event filtered to the 'worker' subagent.",
+  "hooks": {
+    "SubagentStop": [
+      {
+        "matcher": "worker",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/pre-worker-exit.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

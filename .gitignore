@@ -1,0 +1,38 @@
+# --- CREDENTIALS (never commit) ---
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+*.pem
+*.key
+*secret*
+*credential*
+
+# --- LOCAL CLAUDE CODE SETTINGS (machine-specific) ---
+.claude/settings.local.json
+
+# --- MISSION VERIFICATION SCRIPTS (temporary, may hold creds) ---
+missions/*/connections/verify/
+
+# --- HOOK & TEST OUTPUT ---
+/tmp/missions-test-output.log
+/tmp/missions-verify-body
+
+# --- OS NOISE ---
+.DS_Store
+Thumbs.db
+
+# --- EDITOR NOISE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- BUILD / DEPS ---
+node_modules/
+dist/
+build/
+.next/
+__pycache__/
+*.pyc
