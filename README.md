@@ -191,7 +191,7 @@ git clone https://github.com/cysecor/exexutor.git
 cp -R exexutor/claude-missions/. my-new-project/
 cd my-new-project
 git init
-claude
+claude --dangerously-skip-permissions
 ```
 
 **Option B — try it in place.** Clone the repo and work inside the scaffold
@@ -201,7 +201,7 @@ directory directly:
 git clone https://github.com/cysecor/exexutor.git
 cd exexutor/claude-missions
 git init
-claude
+claude --dangerously-skip-permissions
 ```
 
 That's it. Because the seven commands live in `.claude/commands/`, they appear
@@ -211,13 +211,58 @@ in Claude Code automatically — no registration step.
 > `feat(F…)` commit before a worker may finish. If the directory isn't a git
 > repo, the run phase won't behave correctly.
 
+### Launch with `--dangerously-skip-permissions` from the very start
+
+Start **every** phase — yes, from the first idea and planning step, not just the
+run phase — with:
+
+```bash
+claude --dangerously-skip-permissions
+```
+
+**Why from the beginning?** This system is built on **P-1: the orchestrator does
+the work, you only provide data.** That means the orchestrator runs Bash on your
+behalf in *every* phase, not only during `/mission-run`:
+
+- **Plan** — it web-searches and writes the contract, plan, and tech-decisions.
+- **Connect** — it runs `npm install`, `claude mcp add`, writes `.env`, and
+  executes verifier scripts.
+- **Tasks** — it reads and writes mission state files.
+- **Run** — it spawns workers that edit code, run tests, and commit.
+
+Without the flag, Claude Code stops to ask for your approval **before every one
+of those commands**. You'd be clicking "allow" dozens of times per phase — which
+defeats the entire premise of "answer questions, then walk away." Launching with
+`--dangerously-skip-permissions` lets the orchestrator move through scope →
+discover → plan → connect → tasks → run **uninterrupted**, so the only things
+that ever stop for you are the moments that genuinely need a human: answering
+questions, approving the plan, and pasting credentials.
+
+> **Use it in a directory you trust.** The flag lets the agent run bash and edit
+> files without per-action confirmation. That's exactly what you want for a
+> dedicated mission repo — but don't point it at a folder full of unrelated,
+> sensitive files. One mission lives in its own repo by design, which keeps the
+> blast radius contained.
+
 ---
 
 ## Step-by-step: your first mission
 
-Everything below is typed **as slash commands inside Claude Code** — you never
-leave the chat. Run them in order. The whole flow is resumable: each phase checks
-its state files and refuses to run until the previous phase's outputs exist.
+First, make sure you launched Claude Code with the flag — from this very first
+step, not just the run phase:
+
+```bash
+claude --dangerously-skip-permissions
+```
+
+(See [why](#launch-with---dangerously-skip-permissions-from-the-very-start) — in
+short, the orchestrator runs Bash on your behalf in every phase, so without the
+flag you'd be approving commands constantly.)
+
+Everything below is then typed **as slash commands inside Claude Code** — you
+never leave the chat. Run them in order. The whole flow is resumable: each phase
+checks its state files and refuses to run until the previous phase's outputs
+exist.
 
 ### 1. Scope
 
@@ -329,16 +374,11 @@ Shortcuts:
 ```
 
 This phase is **`ZERO_QUESTIONS`** — the system never stops to ask you anything.
-
-> **Operator tip:** launch Claude Code with `--dangerously-skip-permissions` for
-> this phase so tool-approval prompts don't interrupt the autonomous loop:
->
-> ```bash
-> claude --dangerously-skip-permissions
-> ```
->
-> Only use this flag in a directory you trust — it lets the agent run bash and
-> edits without per-action confirmation.
+This is exactly why you launched with `--dangerously-skip-permissions` back at
+[installation](#launch-with---dangerously-skip-permissions-from-the-very-start):
+with no approval prompts and no questions, the loop below runs completely
+unattended. If you skipped the flag earlier, restart Claude Code with it now —
+otherwise every worker action will pause for your confirmation.
 
 The orchestrator then loops, fully autonomously:
 
