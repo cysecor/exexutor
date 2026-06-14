@@ -541,10 +541,10 @@ runs the right suite for the project being built.
 
 | Role | Default model | What it does | Tools |
 |---|---|---|---|
-| **Orchestrator** (main session) | `claude-opus-4-7` | Scoping, planning, judgement, all setup execution. Never writes project code. | All file tools, Bash, WebSearch, WebFetch, slash commands, Agent |
+| **Orchestrator** (main session) | `claude-opus-4-8` | Scoping, planning, judgement, all setup execution. Never writes project code. | All file tools, Bash, WebSearch, WebFetch, slash commands, Agent |
 | **Worker** | `claude-sonnet-4-6` | Implements exactly one feature in a fresh context; uses MCP for live service introspection. | Read, Write, Edit, Bash, Grep, Glob, MCP (per registry) |
-| **Scrutiny validator** | `claude-opus-4-7` | Adversarial milestone code review; fans out parallel per-feature reviewers. Read-only. | Read, Bash, Grep, Glob, Agent |
-| **UX validator** | `claude-opus-4-7` | Boots the running app and drives real user flows. | Read, Bash, Playwright MCP |
+| **Scrutiny validator** | `claude-opus-4-8` | Adversarial milestone code review; fans out parallel per-feature reviewers. Read-only. | Read, Bash, Grep, Glob, Agent |
+| **UX validator** | `claude-opus-4-8` | Boots the running app and drives real user flows. | Read, Bash, Playwright MCP |
 
 > Model strings age — update the `model:` field in each agent file as new releases
 > ship. The single highest-leverage change is putting a **different model family**

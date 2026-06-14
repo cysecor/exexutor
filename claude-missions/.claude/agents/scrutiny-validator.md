@@ -1,7 +1,7 @@
 ---
 name: scrutiny-validator
 description: Adversarial milestone code review. Read-only. Spawns parallel review subagents per feature. Use at milestone boundaries before the UX validator.
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools: Read, Bash, Grep, Glob, Agent
 ---
 

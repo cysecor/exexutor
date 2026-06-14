@@ -26,10 +26,10 @@ comment if you want auditability.
 
 | Role | Capability needed | Default model |
 |---|---|---|
-| Orchestrator (main session) | Slow careful reasoning, conversational scoping, judgement at milestone boundaries, web-search execution | `claude-opus-4-7` |
+| Orchestrator (main session) | Slow careful reasoning, conversational scoping, judgement at milestone boundaries, web-search execution | `claude-opus-4-8` |
 | Worker | Fast code fluency, willingness to iterate, tight instruction-following inside a fresh context | `claude-sonnet-4-6` |
-| Scrutiny validator | Precise instruction-following, adversarial bias, willingness to reject | `claude-opus-4-7` (ideally a different model family entirely if you have access — see below) |
-| UX validator | Patience with flaky UI, reliable tool-use, ability to design real user flows | `claude-opus-4-7` |
+| Scrutiny validator | Precise instruction-following, adversarial bias, willingness to reject | `claude-opus-4-8` (ideally a different model family entirely if you have access — see below) |
+| UX validator | Patience with flaky UI, reliable tool-use, ability to design real user flows | `claude-opus-4-8` |
 
 Search-verify these strings before assuming they're still current. If a
 search reveals a newer generation, update the agent files.
@@ -48,8 +48,8 @@ Drop `missions/<id>/model-overrides.yaml`:
 
 ```yaml
 worker: claude-sonnet-4-6
-scrutiny-validator: claude-opus-4-7
-ux-validator: claude-opus-4-7
+scrutiny-validator: claude-opus-4-8
+ux-validator: claude-opus-4-8
 ```
 
 The orchestrator reads this file (if present) before spawning each subagent and

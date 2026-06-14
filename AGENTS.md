@@ -784,7 +784,7 @@ Any failure → exit 2 + specific reason → worker continues.
 **Question options:** `(a)` `(b)` `(c)` `(d)`. User replies lowercase: `1: a`. Custom: `3: custom — <text>`. Clarification questions mark one ★ recommended.
 **Status vocabulary:** {COMPLETE, PARTIAL, BLOCKED, PASS, FAIL, INCONCLUSIVE, PENDING, GREEN}.
 **Severity:** {blocker, major, minor}.
-**Model strings (current at scaffold time):** `claude-opus-4-7`, `claude-sonnet-4-6`, `claude-haiku-4-5-20251001`. Verify current via search before assuming.
+**Model strings (current at scaffold time):** `claude-opus-4-8`, `claude-sonnet-4-6`, `claude-haiku-4-5-20251001`. Verify current via search before assuming.
 **Default per role:** orchestrator and validators on Opus; workers on Sonnet. Overrides in `model-overrides.yaml`.
 
 ---

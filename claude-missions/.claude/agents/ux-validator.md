@@ -1,7 +1,7 @@
 ---
 name: ux-validator
 description: Exercises the running application against milestone behavioural assertions. Use after scrutiny-validator passes. Requires Playwright MCP or computer-use tools.
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools: Read, Bash, mcp__playwright__*
 ---
 

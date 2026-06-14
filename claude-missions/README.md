@@ -201,7 +201,7 @@ alter execution strategy.
 
 - **Hooks API:** Claude Code's hooks schema has evolved. Verify the `SubagentStop` matcher format in `.claude/settings.json` against current docs.
 - **Playwright MCP** is required for the UX validator. The orchestrator installs it during `/mission-connect`.
-- **Model strings** in agent files (`claude-opus-4-7`, `claude-sonnet-4-6`) age — update as new releases ship.
+- **Model strings** in agent files (`claude-opus-4-8`, `claude-sonnet-4-6`) age — update as new releases ship.
 - **Hook re-runs your test command** on every COMPLETE handoff. For huge test suites, split into fast/full.
 - **Discovery answers** aren't re-asked on edit — re-run `/mission-plan` if you edit them.
 - **Re-clarification** mid-run: delete both clarification and the appended spec sections, then re-run `/mission-tasks`.

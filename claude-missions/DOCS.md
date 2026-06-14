@@ -221,10 +221,10 @@ Read-only and safe at any time. Reports phase completion, assertion counts, mile
 
 | Role | Default model | Capability | Tools |
 |---|---|---|---|
-| Orchestrator (main session) | `claude-opus-4-7` | Slow careful reasoning, scoping, judgement, setup execution | All file tools, Bash, WebSearch, WebFetch, slash commands, Agent |
+| Orchestrator (main session) | `claude-opus-4-8` | Slow careful reasoning, scoping, judgement, setup execution | All file tools, Bash, WebSearch, WebFetch, slash commands, Agent |
 | Worker | `claude-sonnet-4-6` | Fast code fluency in a fresh context; MCP for external services | Read, Write, Edit, Bash, Grep, Glob, MCP (Supabase, GitHub, Postgres, etc. per registry) |
-| Scrutiny validator | `claude-opus-4-7` | Precise instruction-following, adversarial bias | Read, Bash, Grep, Glob, Agent (fan-out) |
-| UX validator | `claude-opus-4-7` | Patient tool-use, designing real user flows | Read, Bash, Playwright MCP |
+| Scrutiny validator | `claude-opus-4-8` | Precise instruction-following, adversarial bias | Read, Bash, Grep, Glob, Agent (fan-out) |
+| UX validator | `claude-opus-4-8` | Patient tool-use, designing real user flows | Read, Bash, Playwright MCP |
 
 The orchestrator now has `WebSearch` and `WebFetch` in its toolset specifically to support P-2. The single highest-leverage configuration change is putting a different model **family** on the scrutiny validator via a proxy (LiteLLM, OpenRouter) — shared training-data bias is real.
 
